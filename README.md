@@ -22,7 +22,7 @@ The project consists of two main components:
        Router 0
           |
         Switch
-      /  / | \  \
+      /  /  \  \
     Client0 Client1 Client2 Client3
 
 The client LAN uses the `192.168.1.0/24` network. Clients obtain their network 
