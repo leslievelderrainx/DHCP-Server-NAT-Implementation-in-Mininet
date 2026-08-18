@@ -15,7 +15,7 @@ The project consists of two main components:
 
 ## Network Topology
 
-    External Server
+       Server
           |
        Router 1
           |
@@ -25,8 +25,18 @@ The project consists of two main components:
       /  /  \  \
     Client0 Client1 Client2 Client3
 
-The client LAN uses the `192.168.1.0/24` network. Clients obtain their network 
-configuration dynamically from the DHCP server.
+The client LAN uses the `192.168.1.0/24` network. client0 uses a static IPv4 address, while client1, client2, and client3 obtain their network configuration dynamically from the DHCP server.
+
+## NAT Configuration
+
+NAT was configured on `router1` using IP masquerading to allow clients on the 
+private `192.168.1.0/24` LAN to communicate with the external `10.0.0.0/24` network.
+
+Traffic from the private LAN was routed through `router0` and then translated by 
+`router1` before reaching the external server. NAT functionality was verified 
+using `tcpdump` on the WAN interface of `router1`, confirming that packets reaching 
+the external network used `router1`'s `10.0.0.1` address rather than the clients' 
+private `192.168.1.x` addresses.
 
 ## Features
 
